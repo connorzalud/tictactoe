@@ -1,0 +1,54 @@
+.gameboard-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    height:200px;
+    width:300px;
+    text-align: center;
+    margin-left: 300px;
+}
+
+.gameboard-container div{
+    border: 1px solid black;
+    font-size: 50px;
+}
+
+#zero{
+    border-top: none;
+    border-left: none;
+}
+
+#zero:hover{
+    background-color: aqua;
+}
+
+#one{
+    border-top:none;
+}
+
+#two{
+    border-top:none;
+    border-right: none;
+}
+
+#three{
+    border-left:none;
+}
+
+#five{
+    border-right: none;
+}
+
+#six{
+    border-left: none;
+    border-bottom: none;
+}
+
+#seven{
+    border-bottom: none;
+}
+
+#eight{
+    border-bottom: none;
+    border-right:none;
+}
