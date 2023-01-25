@@ -52,3 +52,19 @@
     border-bottom: none;
     border-right:none;
 }
+
+.win{
+    color:blue
+}
+
+.lose{
+    color: grey
+}
+
+.x-mark{
+    color:green
+}
+
+.o-mark{
+    color:red
+}
