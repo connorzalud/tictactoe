@@ -4,6 +4,7 @@ const squares = document.querySelectorAll(".square");
 const header = document.querySelector(".header-container");
 
 let board = [0,1,2,3,4,5,6,7,8]
+let turnCount = 0
 
 const playerFactory = (name, mark, turn)=> {
     return {name, mark, turn}
@@ -19,7 +20,7 @@ squares.forEach(squares =>{
 
 
 function checkArray(){
-    let win = false;
+    let win = "false";
     let wins = [
         [0,1,2],
         [3,4,5],
@@ -36,7 +37,7 @@ for (i=0; i<wins.length;i++){
         win = board[a];
         squares[a].classList.replace("x-mark","win")||squares[a].classList.replace("o-mark","win");
         squares[b].classList.replace("x-mark","win")||squares[b].classList.replace("o-mark","win");
-        squares[c].classList.replace("x-mark","win")||squares[c].classList.replace("o-mark","win");
+        squares[c].classList.replace("x-mark","win")||squares[c].classList.replace("o-mark","win"); 
         gameOver(win);
 
         for (j=0;j<squares.length;j++){
@@ -45,6 +46,15 @@ for (i=0; i<wins.length;i++){
             }
             }
         
+    } else if (turnCount === 9){
+        gameOver(win)
+        
+        for (j=0;j<squares.length;j++){
+            squares[j].classList.replace("x-mark","lose");
+            squares[j].classList.replace("o-mark","lose");
+            }
+
+        break;
     }
 }
 
@@ -68,6 +78,7 @@ function clickSquare(e){
             board.splice(e.target.dataset.array,1,player2.mark)
         }
 
+        ++turnCount;
         checkArray();
     
         if(player1.turn === "true"){
@@ -90,9 +101,12 @@ function gameOver(win){
        winText.innerText = `${player1.name} won!`;
        header.append(winText);
 
-    } else {
+    } else if(win === "O"){
        winText.innerText = `${player2.name} won!`;
        header.append(winText);
+    } else if(win === "false") {
+        winText.innerText="Tie!";
+        header.append(winText);
     }
 }
 
